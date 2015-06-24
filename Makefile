@@ -82,6 +82,7 @@ _cadvisor:
 	go build $(GO_EXTRAFLAGS) -a github.com/google/cadvisor
 
 _cadvisorr:
+	#sudo ./cadvisor -storage_driver=gmetric start
 	sudo ./cadvisor start
 	rm -f cadvisor
 
