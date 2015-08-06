@@ -90,6 +90,8 @@ func main() {
 	glog.Infof("Starting cAdvisor version: %q on port %d", version.VERSION, *argPort)
 
 	addr := fmt.Sprintf("%s:%d", *argIp, *argPort)
+	fmt.Println("------address-----------")
+	fmt.Println(addr)
 	glog.Fatal(http.ListenAndServe(addr, nil))
 }
 

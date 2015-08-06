@@ -18,7 +18,8 @@
 package mockfs
 
 import (
-	gomock "code.google.com/p/gomock/gomock"
+//	gomock "code.google.com/p/gomock/gomock"
+	gomock "github.com/golang/mock/gomock"
 	fs "github.com/google/cadvisor/utils/fs"
 )
 
