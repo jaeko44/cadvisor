@@ -25,7 +25,6 @@ import (
 	"github.com/google/cadvisor/storage"
 	"github.com/google/cadvisor/storage/bigquery"
 	"github.com/google/cadvisor/storage/elasticsearch"
-	"github.com/google/cadvisor/storage/gmetric"
 	"github.com/google/cadvisor/storage/influxdb"
 	"github.com/google/cadvisor/storage/redis"
 	"github.com/google/cadvisor/storage/statsd"
@@ -53,8 +52,6 @@ func NewMemoryStorage(backendStorageName string) (*memory.InMemoryCache, error) 
 	switch backendStorageName {
 	case "":
 		backendStorage = nil
-	case "gmetric":
-		backendStorage, err = gmetricc.New()
 	case "influxdb":
 		var hostname string
 		hostname, err = os.Hostname()
