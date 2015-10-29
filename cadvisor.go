@@ -97,6 +97,7 @@ func main() {
 
 	addr := fmt.Sprintf("%s:%d", *argIp, *argPort)
 	glog.Fatal(http.ListenAndServe(addr, handler))
+
 }
 
 func setMaxProcs() {
