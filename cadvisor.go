@@ -50,6 +50,7 @@ var maxHousekeepingInterval = flag.Duration("max_housekeeping_interval", 60*time
 var allowDynamicHousekeeping = flag.Bool("allow_dynamic_housekeeping", true, "Whether to allow the housekeeping interval to be dynamic")
 
 func main() {
+fmt.Println("=============================================================================")
 	defer glog.Flush()
 	flag.Parse()
 
