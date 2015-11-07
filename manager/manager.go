@@ -201,13 +201,13 @@ type manager struct {
 // Start the container manager.
 func (self *manager) Start() error {
 	// Register Docker container factory.
-	err := docker.Register(self, self.fsInfo)
-	if err != nil {
-		glog.Errorf("Docker container factory registration failed: %v.", err)
-	}
+	//err := docker.Register(self, self.fsInfo)
+	//if err != nil {
+	//	glog.Errorf("Docker container factory registration failed: %v.", err)
+	//}
 
 	// Register the raw driver.
-	err = raw.Register(self, self.fsInfo)
+	err := raw.Register(self, self.fsInfo)
 	if err != nil {
 		glog.Errorf("Registration of the raw container factory failed: %v", err)
 	}

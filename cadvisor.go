@@ -17,6 +17,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/golang/glog"
+	cadvisorHttp "github.com/google/cadvisor/http"
+	"github.com/google/cadvisor/manager"
+	"github.com/google/cadvisor/utils/sysfs"
+	"github.com/google/cadvisor/version"
+	"github.com/rs/cors"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
@@ -24,7 +30,6 @@ import (
 	"runtime"
 	"syscall"
 	"time"
-
 	"github.com/golang/glog"
 	cadvisorhttp "github.com/google/cadvisor/http"
 	"github.com/google/cadvisor/manager"
@@ -77,7 +82,7 @@ fmt.Println("===================================================================
 	}
 
 	mux := http.DefaultServeMux
-
+	handler := cors.Default().Handler(mux)
 	// Register all HTTP handlers.
 	err = cadvisorhttp.RegisterHandlers(mux, containerManager, *httpAuthFile, *httpAuthRealm, *httpDigestFile, *httpDigestRealm)
 	if err != nil {
@@ -97,7 +102,8 @@ fmt.Println("===================================================================
 	glog.Infof("Starting cAdvisor version: %s-%s on port %d", version.Info["version"], version.Info["revision"], *argPort)
 
 	addr := fmt.Sprintf("%s:%d", *argIp, *argPort)
-	glog.Fatal(http.ListenAndServe(addr, nil))
+	glog.Fatal(http.ListenAndServe(addr, handler))
+
 }
 
 func setMaxProcs() {
