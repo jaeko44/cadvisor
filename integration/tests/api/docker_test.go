@@ -14,6 +14,7 @@
 
 package api
 
+/*
 import (
 	"fmt"
 	"os"
@@ -269,3 +270,4 @@ func TestDockerContainerNetworkStats(t *testing.T) {
 	assert.NotEqual(stat.Network.RxBytes, stat.Network.TxBytes, "Network tx and rx bytes should not be equal")
 	assert.NotEqual(stat.Network.RxPackets, stat.Network.TxPackets, "Network tx and rx packets should not be equal")
 }
+*/
