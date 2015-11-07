@@ -18,7 +18,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/golang/glog"
-	cadvisorHttp "github.com/google/cadvisor/http"
+	cadvisorhttp "github.com/google/cadvisor/http"
 	"github.com/google/cadvisor/manager"
 	"github.com/google/cadvisor/utils/sysfs"
 	"github.com/google/cadvisor/version"
@@ -30,11 +30,7 @@ import (
 	"runtime"
 	"syscall"
 	"time"
-	"github.com/golang/glog"
-	cadvisorhttp "github.com/google/cadvisor/http"
-	"github.com/google/cadvisor/manager"
-	"github.com/google/cadvisor/utils/sysfs"
-	"github.com/google/cadvisor/version"
+
 )
 
 var argIp = flag.String("listen_ip", "", "IP to listen on, defaults to all IPs")
@@ -55,7 +51,6 @@ var maxHousekeepingInterval = flag.Duration("max_housekeeping_interval", 60*time
 var allowDynamicHousekeeping = flag.Bool("allow_dynamic_housekeeping", true, "Whether to allow the housekeeping interval to be dynamic")
 
 func main() {
-fmt.Println("=============================================================================")
 	defer glog.Flush()
 	flag.Parse()
 
